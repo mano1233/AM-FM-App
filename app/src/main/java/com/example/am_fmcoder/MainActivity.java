@@ -3,6 +3,7 @@ package com.example.am_fmcoder;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.am_fmcoder.ui.AddBinDict;
 import com.example.am_fmcoder.ui.AddDict;
 import com.example.am_fmcoder.ui.Dictonaries;
 import com.example.am_fmcoder.ui.Extended;
@@ -38,8 +39,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(this);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -69,17 +68,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
 
-
     }
 
     @Override
     public void onClick(View v) {
-        if (v instanceof FloatingActionButton){
-            onButton();
-        }
-        else {
-            sendMessage();
-        }
+        sendMessage();
+
 
 
     }
@@ -97,8 +91,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-    private void onButton(){
-        Intent intent = new Intent(this, AddDict.class);
+
+    private void newBin(){
+        Intent intent = new Intent(this, AddBinDict.class);
         startActivity(intent);
     }
     private void sendMessage(){
@@ -110,4 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
+
+
+
 }
