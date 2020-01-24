@@ -48,7 +48,7 @@ public class GalleryFragment extends Fragment{
                 startActivity(intent);
             }
         });
-        View binarylayout = root.findViewById(R.id.binary_layout);
+        View binarylayout = root.findViewById(R.id.binarydict_layout);
         Map<String, Map<String, String>> letterdicts = Dictonaries.getBinDict();
         Object[] names = letterdicts.keySet().toArray();
         bin = new Button[letterdicts.size()];

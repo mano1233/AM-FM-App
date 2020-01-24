@@ -14,10 +14,10 @@
     <string name="enter_message">הכנס הודעה</string>
     <string name="play">PLAY</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
+    <string name="menu_home">בית</string>
+    <string name="menu_bin">מילונים בינארים</string>
+    <string name="menu_letter">מילוני הצפנה</string>
+    <string name="menu_tools">שליחה</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
 </resources>
