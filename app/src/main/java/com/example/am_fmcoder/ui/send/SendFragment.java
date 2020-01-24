@@ -28,7 +28,7 @@ public class SendFragment extends Fragment implements View.OnClickListener {
     private Button[] bin;
     private String binkey = "";
     private String letterkey = "";
-    View root;
+    private View root;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -103,7 +103,6 @@ public class SendFragment extends Fragment implements View.OnClickListener {
         if (is_letter) {
             for (Button b : letter) {
                 if (b.isPressed()) {
-                    is_letter = true;
                     letterkey = String.valueOf(b.getText());
                     b.setBackgroundColor(Color.WHITE);
                 } else {
