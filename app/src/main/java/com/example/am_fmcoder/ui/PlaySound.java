@@ -33,12 +33,6 @@ public class PlaySound extends AppCompatActivity implements View.OnClickListener
         message =intent.getStringExtra("message");
         letterdict = Dictonaries.getLetterDict(intent.getStringExtra("letterkey"));
         bindict = Dictonaries.getBinDict(intent.getStringExtra("binkey")) ;
-
-        System.out.println(bindict);
-        System.out.println(letterdict);
-        System.out.println(mod);
-
-
         Button play = findViewById(R.id.play_sound);
         play.setOnClickListener(this);
 
@@ -47,7 +41,6 @@ public class PlaySound extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         transmit = new Transmitter(this.getApplicationContext(), letterdict, bindict, mod);
-        Log.d("message = ", message);
         player =  transmit.Transmit(message);
     }
 

@@ -1,16 +1,16 @@
-package com.example.am_fmcoder.ui.LetterDict;
+package com.example.am_fmcoder.ui.bindict;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class LetterDictViewModel extends ViewModel {
+public class BinDictViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public LetterDictViewModel() {
+    public BinDictViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
+
     }
 
     public LiveData<String> getText() {

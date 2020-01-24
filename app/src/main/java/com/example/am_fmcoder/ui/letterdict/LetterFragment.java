@@ -1,4 +1,4 @@
-package com.example.am_fmcoder.ui.LetterDict;
+package com.example.am_fmcoder.ui.letterdict;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+
 import com.example.am_fmcoder.R;
 import com.example.am_fmcoder.ui.AddDict;
 import com.example.am_fmcoder.ui.Dictonaries;
@@ -21,11 +21,11 @@ import java.util.Map;
 
 public class LetterFragment extends Fragment {
 
-    Button[] letter;
+    private Button[] letter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
+        View root = inflater.inflate(R.layout.fragment_letterdict, container, false);
         FloatingActionButton fab = root.findViewById(R.id.fab_create_letter);
         fab.setOnClickListener(new View.OnClickListener()
         {
@@ -37,11 +37,10 @@ public class LetterFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        View binarylayout = root.findViewById(R.id.letterdict_layout);
+        View letterlayout = root.findViewById(R.id.letterdict_layout);
         Map<String, Map<String, String>> letterdicts = Dictonaries.getLetterDict();
         Object[] names = letterdicts.keySet().toArray();
         letter = new Button[letterdicts.size()];
-        Log.d("fuck", "onCreateView: ");
         for (int i = 0; i < letter.length; i++) {
             letter[i] = new Button(getActivity());
             letter[i].setText((String) names[i]);
@@ -49,7 +48,7 @@ public class LetterFragment extends Fragment {
             letter[i].setId(i);
             ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             letter[i].setLayoutParams(lp);
-            ((LinearLayout) binarylayout).addView(letter[i]);
+            ((LinearLayout) letterlayout).addView(letter[i]);
 
         }
         return root;

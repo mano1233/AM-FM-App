@@ -1,17 +1,7 @@
 package com.example.am_fmcoder;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.am_fmcoder.ui.AddBinDict;
-import com.example.am_fmcoder.ui.AddDict;
-import com.example.am_fmcoder.ui.Dictonaries;
-import com.example.am_fmcoder.ui.Extended;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import android.util.Log;
-import android.view.View;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -22,12 +12,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -43,8 +27,8 @@ public class MainActivity extends AppCompatActivity{
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
+                R.id.nav_home, R.id.nav_bindict, R.id.nav_letterdict,
+                R.id.nav_send, R.id.nav_share, R.id.nav_credit)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

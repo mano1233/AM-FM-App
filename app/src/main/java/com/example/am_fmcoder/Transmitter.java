@@ -112,7 +112,7 @@ public class Transmitter {
         }
 
     }
-    public void Release( MediaPlayer player){
+    public void Release(MediaPlayer player){
         player.release();
     }
 

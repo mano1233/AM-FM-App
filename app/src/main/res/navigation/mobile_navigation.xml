@@ -12,22 +12,22 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.am_fmcoder.ui.BinDict.BinFragment"
+        android:id="@+id/nav_bindict"
+        android:name="com.example.am_fmcoder.ui.bindict.BinFragment"
         android:label="@string/menu_bin"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_bindict" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.am_fmcoder.ui.LetterDict.LetterFragment"
+        android:id="@+id/nav_letterdict"
+        android:name="com.example.am_fmcoder.ui.letterdict.LetterFragment"
         android:label="@string/menu_letter"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_letterdict" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.example.am_fmcoder.ui.tools.ToolsFragment"
+        android:id="@+id/nav_send"
+        android:name="com.example.am_fmcoder.ui.send.SendFragment"
         android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        tools:layout="@layout/fragment_send" />
 
     <fragment
         android:id="@+id/nav_share"
@@ -36,8 +36,8 @@
         tools:layout="@layout/fragment_share" />
 
     <fragment
-        android:id="@+id/nav_send"
-        android:name="com.example.am_fmcoder.ui.send.SendFragment"
+        android:id="@+id/nav_credit"
+        android:name="com.example.am_fmcoder.ui.credit.CreditFragment"
         android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+        tools:layout="@layout/fragment_credit" />
 </navigation>

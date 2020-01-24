@@ -1,4 +1,4 @@
-package com.example.am_fmcoder.ui.BinDict;
+package com.example.am_fmcoder.ui.bindict;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +25,7 @@ public class BinFragment extends Fragment{
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
+        View root = inflater.inflate(R.layout.fragment_bindict, container, false);
         FloatingActionButton fab = root.findViewById(R.id.fab_create_bin);
         fab.setOnClickListener(new View.OnClickListener()
         {
@@ -37,10 +37,9 @@ public class BinFragment extends Fragment{
             }
         });
         View binarylayout = root.findViewById(R.id.binarydict_layout);
-        Map<String, Map<String, String>> letterdicts = Dictonaries.getBinDict();
-        Object[] names = letterdicts.keySet().toArray();
-        bin = new Button[letterdicts.size()];
-        Log.d("fuck", "onCreateView: ");
+        Map<String, Map<String, String>> bindicts = Dictonaries.getBinDict();
+        Object[] names = bindicts.keySet().toArray();
+        bin = new Button[bindicts.size()];
         for (int i = 0; i < bin.length; i++) {
             bin[i] = new Button(getActivity());
             bin[i].setText((String) names[i]);
