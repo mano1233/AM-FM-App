@@ -28,15 +28,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Map;
 
-public class GalleryFragment extends Fragment{
+public class BinFragment extends Fragment{
 
-    private GalleryViewModel galleryViewModel;
     private Button[] bin;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
         FloatingActionButton fab = root.findViewById(R.id.fab_create_bin);
         fab.setOnClickListener(new View.OnClickListener()
@@ -45,6 +42,7 @@ public class GalleryFragment extends Fragment{
             public void onClick(View v)
             {
                 Intent intent = new Intent(getActivity(), AddBinDict.class);
+                intent.putExtra("is_standalone", true);
                 startActivity(intent);
             }
         });

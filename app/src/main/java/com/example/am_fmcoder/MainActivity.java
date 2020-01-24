@@ -29,10 +29,9 @@ import android.widget.LinearLayout;
 
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity{
 
     private AppBarConfiguration mAppBarConfiguration;
-    private Button[] letters;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,32 +50,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        View homelayout = findViewById(R.id.home_layout);
-        Map<String, Map<String, String>> letterdicts = Dictonaries.getLetterDict();
-        Object[] names = letterdicts.keySet().toArray();
-        letters = new Button[letterdicts.size()];
-        for(int i = 0; i < letters.length; i++) {
-            letters[i] = new Button(this);
-            letters[i].setText((String)names[i]);
-            letters[i].setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            letters[i].setId(i);
-            ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            letters[i].setLayoutParams(lp);
-            ((LinearLayout) homelayout).addView(letters[i]);
-            letters[i].setOnClickListener(this);
-
-        }
-
-
     }
 
-    @Override
-    public void onClick(View v) {
-        sendMessage();
 
-
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -92,19 +68,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 || super.onSupportNavigateUp();
     }
 
-    private void newBin(){
-        Intent intent = new Intent(this, AddBinDict.class);
-        startActivity(intent);
-    }
-    private void sendMessage(){
-        Intent intent = new Intent(this, SendMessage.class);
-        for (Button b : letters){
-            if (b.isPressed()){
-                intent.putExtra("dictname", String.valueOf(b.getText()));
-                startActivity(intent);
-            }
-        }
-    }
 
 
 

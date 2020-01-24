@@ -24,6 +24,7 @@ import static java.lang.Integer.toBinaryString;
 public class AddBinDict extends AppCompatActivity {
     private EditText[] bin = null;
     private Map<String, String> bindict = null;
+    Boolean is_standalone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

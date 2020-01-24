@@ -22,7 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Map;
 
-public class SlideshowFragment extends Fragment {
+public class LetterFragment extends Fragment {
 
     private SlideshowViewModel slideshowViewModel;
     Button[] letter;
@@ -39,6 +39,7 @@ public class SlideshowFragment extends Fragment {
             public void onClick(View v)
             {
                 Intent intent = new Intent(getActivity(), AddDict.class);
+                intent.putExtra("is_standalone", true);
                 startActivity(intent);
             }
         });
