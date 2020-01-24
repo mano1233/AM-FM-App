@@ -6,7 +6,7 @@
     android:layout_height="match_parent" >
 
     <ToggleButton
-        android:id="@+id/AM_FM2"
+        android:id="@+id/AM_FM_fragment"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:textOff="@string/am"
@@ -45,11 +45,11 @@
 
     <ScrollView
         android:id="@+id/send_letter_view"
-        android:layout_width="150dp"
+        android:layout_width="146dp"
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/send_bin_view"
+        app:layout_constraintStart_toStartOf="@+id/seekBar0"
         app:layout_constraintTop_toBottomOf="@+id/seekBar0"
         app:layout_constraintVertical_bias="0.0">
 
@@ -62,12 +62,11 @@
 
     <ScrollView
         android:id="@+id/send_bin_view"
-        android:layout_width="150dp"
+        android:layout_width="146dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="56dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/seekBar0"
         app:layout_constraintTop_toBottomOf="@+id/seekBar0"
         app:layout_constraintVertical_bias="0.0">
 
@@ -89,7 +88,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AM_FM2" />
+        app:layout_constraintTop_toBottomOf="@+id/AM_FM_fragment" />
 
     <SeekBar
         android:id="@+id/seekBar0"

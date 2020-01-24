@@ -1,4 +1,4 @@
-package com.example.am_fmcoder.ui.share;
+package com.example.am_fmcoder.ui.quiz;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,17 +12,17 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import com.example.am_fmcoder.R;
 
-public class ShareFragment extends Fragment {
+public class QuizFragment extends Fragment {
 
-    private ShareViewModel shareViewModel;
+    private QuizViewModel quizViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        shareViewModel =
-                ViewModelProviders.of(this).get(ShareViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_share, container, false);
+        quizViewModel =
+                ViewModelProviders.of(this).get(QuizViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_quiz, container, false);
         final TextView textView = root.findViewById(R.id.text_share);
-        shareViewModel.getText().observe(this, new Observer<String>() {
+        quizViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

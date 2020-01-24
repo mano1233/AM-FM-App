@@ -18,7 +18,7 @@
     <string name="menu_bin">מילונים בינארים</string>
     <string name="menu_letter">מילוני הצפנה</string>
     <string name="menu_tools">שליחה</string>
-    <string name="menu_share">Share</string>
+    <string name="menu_quiz">חידה</string>
     <string name="menu_send">Send</string>
     <string name="section_2">Communicate</string>
 </resources>
