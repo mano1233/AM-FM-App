@@ -2,30 +2,22 @@ package com.example.am_fmcoder.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import androidx.annotation.Nullable;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.am_fmcoder.MainActivity;
 import com.example.am_fmcoder.R;
-import com.example.am_fmcoder.SendMessage;
-import com.example.am_fmcoder.ui.AddBinDict;
+import com.example.am_fmcoder.ui.SendMessage;
 import com.example.am_fmcoder.ui.AddDict;
 import com.example.am_fmcoder.ui.Dictonaries;
-import com.example.am_fmcoder.ui.Extended;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.List;
 import java.util.Map;
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
@@ -72,6 +64,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
     private  void createLetter(){
         Intent intent = new Intent(getActivity(), AddDict.class);
+        intent.putExtra("is_standalone", false);
         startActivity(intent);
     }
     private void sendMessage(){

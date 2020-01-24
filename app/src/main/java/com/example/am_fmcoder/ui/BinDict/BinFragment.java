@@ -1,6 +1,5 @@
-package com.example.am_fmcoder.ui.gallery;
+package com.example.am_fmcoder.ui.BinDict;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,20 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import androidx.annotation.Nullable;
-import androidx.annotation.NonNull;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
-import com.example.am_fmcoder.MainActivity;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import com.example.am_fmcoder.R;
-import com.example.am_fmcoder.SendMessage;
 import com.example.am_fmcoder.ui.AddBinDict;
-import com.example.am_fmcoder.ui.AddDict;
 import com.example.am_fmcoder.ui.Dictonaries;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -42,7 +33,6 @@ public class BinFragment extends Fragment{
             public void onClick(View v)
             {
                 Intent intent = new Intent(getActivity(), AddBinDict.class);
-                intent.putExtra("is_standalone", true);
                 startActivity(intent);
             }
         });

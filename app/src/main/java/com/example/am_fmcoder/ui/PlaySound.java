@@ -1,4 +1,4 @@
-package com.example.am_fmcoder;
+package com.example.am_fmcoder.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.am_fmcoder.R;
+import com.example.am_fmcoder.Transmitter;
 import com.example.am_fmcoder.ui.Dictonaries;
 
 import java.util.Map;

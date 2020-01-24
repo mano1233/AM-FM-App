@@ -19,6 +19,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.example.am_fmcoder.MainActivity;
 import com.example.am_fmcoder.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -27,10 +28,13 @@ import static com.example.am_fmcoder.ui.Extended.isAccepted;
 public class AddDict extends AppCompatActivity {
     private EditText[] letters = null;
     private Map<String, String> letterdict = null;
+    Boolean is_standalone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_dict);
+        Intent intent = getIntent();
+        is_standalone = intent.getBooleanExtra("is_standalone", false);
         letters = new EditText[27];
         View letterlayout = findViewById(R.id.letterlayout);
         for(int i = 0; i < letters.length; i++) {
@@ -55,7 +59,13 @@ public class AddDict extends AppCompatActivity {
 
     }
     private void onButton(){
-        Intent intent = new Intent(this, AddBinDict.class);
+        Intent intent;
+        if (is_standalone){
+            intent = new Intent(this, MainActivity.class);
+        }
+        else {
+            intent = new Intent(this, AddBinDict.class);
+        }
         letterdict = new HashMap<>();
         Map<String, Map<String, String>> dictfin = new HashMap<>();
         String dictname = "default letters dict";

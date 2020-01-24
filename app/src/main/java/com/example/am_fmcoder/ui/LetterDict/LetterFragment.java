@@ -1,4 +1,4 @@
-package com.example.am_fmcoder.ui.slideshow;
+package com.example.am_fmcoder.ui.LetterDict;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,14 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import androidx.annotation.Nullable;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import com.example.am_fmcoder.R;
-import com.example.am_fmcoder.ui.AddBinDict;
 import com.example.am_fmcoder.ui.AddDict;
 import com.example.am_fmcoder.ui.Dictonaries;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -24,13 +21,10 @@ import java.util.Map;
 
 public class LetterFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
     Button[] letter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                ViewModelProviders.of(this).get(SlideshowViewModel.class);
         View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
         FloatingActionButton fab = root.findViewById(R.id.fab_create_letter);
         fab.setOnClickListener(new View.OnClickListener()
