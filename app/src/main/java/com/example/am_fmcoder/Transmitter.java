@@ -3,7 +3,6 @@ package com.example.am_fmcoder;
 
 import android.content.Context;
 import android.media.MediaPlayer;
-import android.util.Log;
 
 import java.io.File;
 import java.util.Map;
@@ -15,6 +14,7 @@ public class Transmitter {
     private Map<String,String> encriptionDict;
     private Map<String,String> binaryDict;
     private Context mContext;
+    private MediaPlayer player;
 
     /**
      * Constractor for transmiting class.
@@ -34,25 +34,23 @@ public class Transmitter {
      * create a raw sound file in app's internal memory using a CreateSine object.
      * @param message - this message is the message you want to send.
      */
-    private String createWAV(String message) {
+    private String createWAV(String message, String freq, String amp) {
         // create encripted message and byesString
         StringBuilder sbm = new StringBuilder();
         StringBuilder sbb = new StringBuilder();
         for (int i = 0; i < message.length(); i++) {
-            String letter = this.encriptionDict.get(String.valueOf(message.charAt(i)));
+            String letter = this.encriptionDict.get((String.valueOf(message.charAt(i)))+" ");
+            System.out.println(letter);
             sbm.append(letter);
             sbb.append(this.binaryDict.get(letter+" "));
         }
 
-        String encriptedMsg = sbm.toString();
         String binaryString = sbb.toString();
-
-        String time = String.valueOf(0.5 * binaryString.length());
 
         // create WAV file
         String[] args = new String[5];
-        args[0] = "880";
-        args[1] = time;
+        args[0] = freq;
+        args[1] = amp;
         args[2] = message;
         args[3] = binaryString;
         args[4] = this.transmitMethod;
@@ -66,20 +64,21 @@ public class Transmitter {
      * play the message you entered.
      * @param message - message to play.
      */
-    public MediaPlayer Transmit(String message) {
-        Log.d("debug", this.binaryDict.toString());
-        Log.d("debug", this.encriptionDict.toString());
-        Log.d("debug", this.transmitMethod);
+    public void Transmit(String message, String freq, String amp) {
+        System.out.println(this.binaryDict);
+        System.out.println(this.encriptionDict);
+        System.out.println(this.transmitMethod);
 
         // check if WAV file exists
-        String path = this.mContext.getFilesDir() + "/"+ message.concat(this.transmitMethod) + ".wav";
+        String path = this.mContext.getFilesDir() + "/" +
+                ((message.concat(this.transmitMethod)).concat(freq)).concat(amp) + ".wav";
         System.out.println("path = " + path);
         File file = new File(path);
         if (!file.exists()){
-            String filepath = this.createWAV(message);
+            String filepath = this.createWAV(message, freq, amp);
             System.out.println("path = " + filepath);
-            MediaPlayer player = new MediaPlayer();
-            File newFile = new File(filepath);
+            player = new MediaPlayer();
+
             try {
                 player.setDataSource(filepath);
                 player.prepare();
@@ -91,7 +90,7 @@ public class Transmitter {
             }
 
             player.start();
-            return player;
+
         }
 
         else {
@@ -103,12 +102,12 @@ public class Transmitter {
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
             } catch (Exception e) {
-                Log.e("Exception", "Exception of type : " + e.toString());
+                System.out.println("Exception of type : " + e.toString());
                 e.printStackTrace();
             }
 
             player.start();
-            return player;
+
         }
 
     }

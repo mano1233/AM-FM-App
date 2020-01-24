@@ -24,7 +24,7 @@ public class CreateSine
     static int sRate = 44100;
     static int bitDepth = 16;
     static int nChannels = 1;
-    static Float dur;
+    static float amp;
 
     static float changeRate;
 
@@ -34,17 +34,16 @@ public class CreateSine
      *             is the message, args[3] is the binary string of the message and args[4] is FM/AM
      * @param context app context
      */
-    public static String main(String[] args, Context context)
-    {
+    public static String main(String[] args, Context context) {
         freq = Float.parseFloat(args[0]);
-        changeRate = (float)((2.0 * Math.PI * freq) / sRate);
+        changeRate = (float) ((2.0 * Math.PI * freq) / sRate);
+        amp = Float.parseFloat(args[1]);
 
-        dur = Float.parseFloat(args[1]) + 2;
 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        fileNameString = (String)args[2].concat(args[4]) + ".wav";
-        file = new File(context.getFilesDir(),fileNameString);
-        if(!file.exists()){
+        fileNameString = (String) ((args[2].concat(args[4])).concat(args[0])).concat(args[1]) + ".wav";
+        file = new File(context.getFilesDir(), fileNameString);
+        if (!file.exists()) {
             try {
                 file.createNewFile();
             } catch (IOException e) {
@@ -55,16 +54,14 @@ public class CreateSine
         filePath = file.getAbsolutePath();
 
         float[] bytes = new float[args[3].length()];
-        for (int i = 0; i < args[3].length() ; i++) {
+        for (int i = 0; i < args[3].length(); i++) {
             bytes[i] = Float.parseFloat(String.valueOf(args[3].charAt(i)));
         }
 
         String AMFM = args[4];
 
 
-
-        try
-        {
+        try {
             raw = new RandomAccessFile(filePath, "rw");
 
             raw.setLength(0); // Set file length to 0, to prevent unexpected behavior in case the file already existed
@@ -74,15 +71,14 @@ public class CreateSine
             raw.writeBytes("fmt ");
             raw.writeInt(Integer.reverseBytes(16)); // Sub-chunk size, 16 for PCM
             raw.writeShort(Short.reverseBytes((short) 1)); // AudioFormat, 1 for PCM
-            raw.writeShort(Short.reverseBytes((short)nChannels));// Number of channels, 1 for mono, 2 for stereo
+            raw.writeShort(Short.reverseBytes((short) nChannels));// Number of channels, 1 for mono, 2 for stereo
             raw.writeInt(Integer.reverseBytes(sRate)); // Sample rate
-            raw.writeInt(Integer.reverseBytes(sRate*bitDepth*nChannels/8)); // Byte rate, SampleRate*NumberOfChannels*bitDepth/8
-            raw.writeShort(Short.reverseBytes((short)(nChannels*bitDepth/8))); // Block align, NumberOfChannels*bitDepth/8
-            raw.writeShort(Short.reverseBytes((short)bitDepth)); // Bit Depth
+            raw.writeInt(Integer.reverseBytes(sRate * bitDepth * nChannels / 8)); // Byte rate, SampleRate*NumberOfChannels*bitDepth/8
+            raw.writeShort(Short.reverseBytes((short) (nChannels * bitDepth / 8))); // Block align, NumberOfChannels*bitDepth/8
+            raw.writeShort(Short.reverseBytes((short) bitDepth)); // Bit Depth
             raw.writeBytes("data");
             raw.writeInt(0); // Data chunk size not known yet, write 0. This is = sample count.
-        }
-        catch(IOException e) {
+        } catch (IOException e) {
 //            e.printStackTrace();
             System.out.println(e);
             System.out.println("I/O exception occured while writing data");
@@ -90,41 +86,54 @@ public class CreateSine
 
         // write begin sound 1 sec
         for (int i = 0; i < sRate; i++) {
-            writeSample( (float)Math.sin( 2*i * changeRate ));
+            writeSample((float) Math.sin(2 * i * changeRate));
         }
         // write to file
-        int k = 0;
+        double breakTime = 0.25;
+        double byteTime = 0.5;
+
         if (AMFM.equals("FM")) {
-            for (int i = 1; i < sRate*dur+1; i++) {
-//            System.out.println(k);
-                float b = bytes[k];
-                if (b==0) {
-                    writeSample( (float)Math.sin(0.5* i * changeRate ) );
+            for (int i = 0; i < bytes.length; i++) {
+                float b = bytes[i];
+                System.out.println(b);
+                // wait half a second
+                for (int j = 0; j < breakTime * sRate; j++) {
+                    writeSample(0);
                 }
-                else {
-                    writeSample( (float)Math.sin( i * changeRate ) );
-                }
-                if (i%(sRate*dur/bytes.length)==0) {
-                    k += 1;
-                }
-            }
-        }
-        else {
-            for (int i = 1; i < sRate*dur+1; i++)
-            {
-//            System.out.println(k);
-                float b = bytes[k];
-                if (b==0) {
-                    writeSample( (float)0.5*(float)Math.sin( i * changeRate ) );
-                }
-                else {
-                    writeSample( (float)Math.sin( i * changeRate ) );
-                }
-                if (i%(sRate*dur/bytes.length)==0) {
-                    k += 1;
+                // write byte
+                for (int j = 0; j < byteTime * sRate; j++) {
+                    if (b == 0) {
+                        writeSample((float) (amp * Math.sin(0.5 * j * changeRate)));
+                    } else {
+                        writeSample((float) (amp * Math.sin(j * changeRate)));
+                    }
                 }
 
             }
+        }
+
+        else {
+            for (int i = 0; i < bytes.length; i++) {
+                float b = bytes[i];
+                System.out.println(b);
+                // wait half a second
+                for (int j = 0; j < breakTime * sRate; j++) {
+                    writeSample(0);
+                }
+                // write byte
+                for (int j = 0; j < byteTime * sRate; j++) {
+                    if (b == 0) {
+                        writeSample((float) (amp*0.5*Math.sin(j * changeRate)));
+                    } else {
+                        writeSample((float) (amp*Math.sin(j * changeRate)));
+                    }
+                }
+
+            }
+        }
+        //write end 0 sound half sec
+        for (int i = 0; i < 0.5*sRate; i++) {
+            writeSample( 0);
         }
         // write end sound 1 sec
         for (int i = 0; i < sRate; i++) {

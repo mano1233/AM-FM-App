@@ -26,7 +26,7 @@
     <fragment
         android:id="@+id/nav_send"
         android:name="com.example.am_fmcoder.ui.send.SendFragment"
-        android:label="@string/menu_tools"
+        android:label="@string/menu_send"
         tools:layout="@layout/fragment_send" />
 
     <fragment

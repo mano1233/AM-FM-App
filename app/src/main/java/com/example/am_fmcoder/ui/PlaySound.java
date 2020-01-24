@@ -30,7 +30,7 @@ public class PlaySound extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_play_sound);
         Intent intent = getIntent();
         mod = intent.getStringExtra("mod");
-        message =intent.getStringExtra("message");
+        message = intent.getStringExtra("message");
         letterdict = Dictonaries.getLetterDict(intent.getStringExtra("letterkey"));
         bindict = Dictonaries.getBinDict(intent.getStringExtra("binkey")) ;
         Button play = findViewById(R.id.play_sound);
@@ -41,7 +41,7 @@ public class PlaySound extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         transmit = new Transmitter(this.getApplicationContext(), letterdict, bindict, mod);
-        player =  transmit.Transmit(message);
+        transmit.Transmit(message, "880","1");
     }
 
     @Override
