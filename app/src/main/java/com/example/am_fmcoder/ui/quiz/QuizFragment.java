@@ -54,9 +54,11 @@ public class QuizFragment extends Fragment implements View.OnClickListener, Medi
         player.stop();
     }
     protected void unPause(){
+        play.setText("השהה");
         player.start();
     }
     protected void Pause(){
+        play.setText("המשך");
         player.pause();
     }
     @Override
