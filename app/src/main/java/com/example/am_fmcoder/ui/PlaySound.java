@@ -24,7 +24,8 @@ public class PlaySound extends AppCompatActivity implements View.OnClickListener
     private Map<String, String> bindict;
     private String amp;
     private String freq;
-    Transmitter transmit;
+    private Transmitter transmit;
+    private static Button play;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,30 +38,25 @@ public class PlaySound extends AppCompatActivity implements View.OnClickListener
         freq = intent.getStringExtra("freq");
         letterdict = Dictonaries.getLetterDict(intent.getStringExtra("letterkey"));
         bindict = Dictonaries.getBinDict(intent.getStringExtra("binkey")) ;
-        Button play = findViewById(R.id.play_sound);
+        play = findViewById(R.id.play_sound);
         play.setOnClickListener(this);
 
     }
 
     @Override
-    public void onClick(final View v) {
-
+    public void onClick(View v) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 play();
             }
         }).start();
-        TextView t = findViewById(R.id.textViewloading);
-        t.setText("טוען");
+        TextView t1 = findViewById(R.id.textViewloading);
+        t1.setText("טוען");
 
     }
     protected void play(){
-        Log.d("fuck", letterdict.toString());
-        Log.d("fuck", bindict.toString());
-        Log.d("fuck", mod);
         transmit = new Transmitter(this.getApplicationContext(), letterdict, bindict, mod);
-        Log.d("fuck", "not here");
         transmit.Transmit(message, freq, amp);
 
     }
@@ -72,5 +68,8 @@ public class PlaySound extends AppCompatActivity implements View.OnClickListener
             transmit.Release();
         }
 
+    }
+    public static void setPause(){
+        play.setText("השהה");
     }
 }

@@ -180,7 +180,6 @@ public class SendFragment extends Fragment implements View.OnClickListener{
         intent.putExtra("letterkey", letterkey);
         intent.putExtra("binkey", binkey);
         intent.putExtra("freq", String.valueOf(textView_fm.getText()));
-        Log.d("fick", "freq:" + String.valueOf(textView_fm.getText()));
         intent.putExtra("amp", String.valueOf(textView_am.getText()));
         startActivity(intent);
 
@@ -212,4 +211,5 @@ public class SendFragment extends Fragment implements View.OnClickListener{
             }
         }
     }
+
 }

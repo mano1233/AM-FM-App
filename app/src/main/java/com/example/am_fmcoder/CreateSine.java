@@ -39,8 +39,6 @@ public class CreateSine
         freq = Float.parseFloat(args[0]);
         changeRate = (float) ((2.0 * Math.PI * freq) / sRate);
         amp = Float.parseFloat(args[1]);
-        Log.d("fuck", String.valueOf(amp));
-        Log.d("fuck", String.valueOf(freq));
 
 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());

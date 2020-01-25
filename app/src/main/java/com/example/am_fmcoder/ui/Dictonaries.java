@@ -44,7 +44,7 @@ public class Dictonaries {
         for(int i=0; i<27; i++){
             String temp = toBinaryString(i+1);
             String binary = temp + new String(new char[5-temp.length()]).replace("\0", "0");
-            bdict.put(String.valueOf(getChar(i)), binary);
+            bdict.put(String.valueOf(getChar(i))+ " ", binary);
         }
         bindict.put("מילון בינארי דיפולטי",bdict);
         for(int i=0; i<27; i++){

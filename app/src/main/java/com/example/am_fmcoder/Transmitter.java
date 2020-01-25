@@ -8,11 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.am_fmcoder.ui.PlaySound;
+
 import java.io.File;
 import java.util.Map;
 
 
-public class Transmitter {
+public class Transmitter implements MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener{
 
     private String transmitMethod;
     private Map<String,String> encriptionDict;
@@ -82,6 +84,7 @@ public class Transmitter {
             String filepath = this.createWAV(message, freq, amp);
             System.out.println("path = " + filepath);
             player = new MediaPlayer();
+            player.setOnPreparedListener(this);
 
             try {
                 player.setDataSource(filepath);
@@ -98,6 +101,7 @@ public class Transmitter {
 
         else {
             player = new MediaPlayer();
+            player.setOnPreparedListener(this);
             try {
                 player.setDataSource(path);
                 player.prepare();
@@ -117,4 +121,14 @@ public class Transmitter {
         player.release();
     }
 
+    @Override
+    public void onPrepared(MediaPlayer mp) {
+        PlaySound.setPause();
+    }
+
+    @Override
+    public boolean onError(MediaPlayer mp, int what, int extra) {
+        Log.d("fuck", "onError: ");
+        return false;
+    }
 }
