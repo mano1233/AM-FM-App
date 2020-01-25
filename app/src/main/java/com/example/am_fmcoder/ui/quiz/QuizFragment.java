@@ -1,9 +1,11 @@
 package com.example.am_fmcoder.ui.quiz;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -12,22 +14,30 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import com.example.am_fmcoder.R;
 
-public class QuizFragment extends Fragment {
+public class QuizFragment extends Fragment implements View.OnClickListener {
 
     private QuizViewModel quizViewModel;
+    MediaPlayer player;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        quizViewModel =
-                ViewModelProviders.of(this).get(QuizViewModel.class);
         View root = inflater.inflate(R.layout.fragment_quiz, container, false);
-        final TextView textView = root.findViewById(R.id.text_share);
-        quizViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        Button play = root.findViewById(R.id.play_Riddle);
+        play.setOnClickListener(this);
+
         return root;
+    }
+
+    @Override
+    public void onClick(View v) {
+        player = MediaPlayer.create(getActivity(), R.raw.riddle);
+        player.start();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        player.pause();
+        player.stop();
     }
 }

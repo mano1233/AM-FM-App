@@ -43,20 +43,20 @@ public class PlaySound extends AppCompatActivity implements View.OnClickListener
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(final View v) {
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                play();
+                play(v);
             }
         }).start();
         TextView t = findViewById(R.id.textViewloading);
         t.setText("טוען");
 
     }
-    protected void play(){
-        transmit = new Transmitter(this.getApplicationContext(), letterdict, bindict, mod);
+    protected void play(View v){
+        transmit = new Transmitter(this.getApplicationContext(), letterdict, bindict, mod, v);
         transmit.Transmit(message, amp, freq);
 
     }

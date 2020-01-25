@@ -13,6 +13,7 @@
     <string name="fm">FM</string>
     <string name="enter_message">הכנס הודעה</string>
     <string name="play">נגן</string>
+    <string name="play_riddle">נגן חידה</string>
 
     <string name="menu_home">בית</string>
     <string name="menu_bin">מילונים בינארים</string>
