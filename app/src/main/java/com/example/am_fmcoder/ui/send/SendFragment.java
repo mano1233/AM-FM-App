@@ -28,8 +28,8 @@ public class SendFragment extends Fragment implements View.OnClickListener{
 
     private Button[] letter;
     private Button[] bin;
-    private String binkey = "";
-    private String letterkey = "";
+    private String binkey = "מילון בינארי דיפולטי";
+    private String letterkey = "מילון הצפנה דיפולטי";
     private View root;
     TextView textView_fm;
     TextView textView_am;
@@ -47,7 +47,7 @@ public class SendFragment extends Fragment implements View.OnClickListener{
         Map<String, Map<String, String>> bindicts = Dictonaries.getBinDict();
         Object[] binnames = bindicts.keySet().toArray();
         bin = new Button[letterdicts.size()];
-        for (int i = 0; i < letter.length; i++) {
+        for (int i = 0; i < letternames.length; i++) {
             letter[i] = new Button(getActivity());
             letter[i].setText((String) letternames[i]);
             letter[i].setBackgroundColor(Color.LTGRAY);
@@ -58,7 +58,7 @@ public class SendFragment extends Fragment implements View.OnClickListener{
             ((LinearLayout) letterlayout).addView(letter[i]);
             letter[i].setOnClickListener(this);
         }
-        for (int i = 0; i < bin.length; i++) {
+        for (int i = 0; i < binnames.length; i++) {
             bin[i] = new Button(getActivity());
             bin[i].setText((String) binnames[i]);
             bin[i].setBackgroundColor(Color.LTGRAY);
@@ -69,10 +69,6 @@ public class SendFragment extends Fragment implements View.OnClickListener{
             ((LinearLayout) binarylayout).addView(bin[i]);
             bin[i].setOnClickListener(this);
         }
-        letterkey = (String) letternames[0];
-        letter[0].setBackgroundColor(Color.WHITE);
-        binkey = (String) binnames[0];
-        bin[0].setBackgroundColor(Color.WHITE);
         final SeekBar seekbar_am = root.findViewById(R.id.seekBar_am);
         textView_fm = root.findViewById(R.id.textView_fm);
         seekbar_am.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {

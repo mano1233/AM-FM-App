@@ -52,7 +52,7 @@ public class AddBinDict extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         bindict = new HashMap<>();
         Map<String, Map<String, String>> dictfin = new HashMap<>();
-        String dictname = "מילון בינארי דיפולטי";
+        String dictname;
         if (isAccepted(bin)) {
             for (int i=0; i<27; i++) {
                 String temp = bin[i].getText().toString();
@@ -61,16 +61,9 @@ public class AddBinDict extends AppCompatActivity {
             }
             EditText dictName = findViewById(R.id.dictname);
             dictname = String.valueOf(dictName.getText());
+            dictfin.put(dictname, bindict);
+            Dictonaries.addbinDict(dictfin);
         }
-        else {
-            for(int i=0; i<27; i++){
-                String temp = toBinaryString(i+1);
-                String binary = temp + new String(new char[5-temp.length()]).replace("\0", "0");
-                bindict.put(String.valueOf(bin[i].getHint()), binary);
-            }
-        }
-        dictfin.put(dictname, bindict);
-        Dictonaries.addbinDict(dictfin);
         startActivity(intent);
     }
 }

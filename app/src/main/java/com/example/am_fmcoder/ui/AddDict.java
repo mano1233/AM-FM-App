@@ -68,21 +68,16 @@ public class AddDict extends AppCompatActivity {
         }
         letterdict = new HashMap<>();
         Map<String, Map<String, String>> dictfin = new HashMap<>();
-        String dictname = "מילון הצפנה דיפלוטי";
+        String dictname;
         if (isAccepted(letters)) {
             for (EditText text : letters) {
                 letterdict.put(String.valueOf(text.getHint()),text.getText().toString());
             }
             EditText dictName = findViewById(R.id.dictname);
             dictname = String.valueOf(dictName.getText());
+            dictfin.put(dictname,letterdict);
+            Dictonaries.addLetterDict(dictfin);
         }
-        else {
-            for(int i=0; i<27; i++){
-                letterdict.put(String.valueOf(Extended.getChar(i)) + " ",String.valueOf(Extended.getChar(i)));
-            }
-        }
-        dictfin.put(dictname,letterdict);
-        Dictonaries.addLetterDict(dictfin);
         startActivity(intent);
 
     }

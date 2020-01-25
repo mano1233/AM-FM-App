@@ -26,6 +26,7 @@ public class PlaySound extends AppCompatActivity implements View.OnClickListener
     private String freq;
     private Transmitter transmit;
     private static Button play;
+    private  static  TextView t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +41,20 @@ public class PlaySound extends AppCompatActivity implements View.OnClickListener
         bindict = Dictonaries.getBinDict(intent.getStringExtra("binkey")) ;
         play = findViewById(R.id.play_sound);
         play.setOnClickListener(this);
+        t = findViewById(R.id.textViewloading);
 
     }
 
     @Override
     public void onClick(View v) {
+        if (((Button)v).getText() == "השהה"){
+            pause();
+            return;
+        }
+        if (((Button)v).getText() == "המשך"){
+            unpause();
+            return;
+        }
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -60,6 +70,14 @@ public class PlaySound extends AppCompatActivity implements View.OnClickListener
         transmit.Transmit(message, freq, amp);
 
     }
+    protected void pause(){
+        transmit.Pause();
+        play.setText("המשך");
+    }
+    protected void unpause(){
+        transmit.Resume();
+        play.setText("השהה");
+    }
 
     @Override
     protected void onStop() {
@@ -71,5 +89,6 @@ public class PlaySound extends AppCompatActivity implements View.OnClickListener
     }
     public static void setPause(){
         play.setText("השהה");
+        t.setText("");
     }
 }

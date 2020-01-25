@@ -14,15 +14,16 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import com.example.am_fmcoder.R;
 
-public class QuizFragment extends Fragment implements View.OnClickListener {
+public class QuizFragment extends Fragment implements View.OnClickListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
 
     private QuizViewModel quizViewModel;
     MediaPlayer player;
+    Button play;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_quiz, container, false);
-        Button play = root.findViewById(R.id.play_Riddle);
+        play = root.findViewById(R.id.play_Riddle);
         play.setOnClickListener(this);
 
         return root;
@@ -30,8 +31,20 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        player = MediaPlayer.create(getActivity(), R.raw.riddle);
-        player.start();
+        switch (String.valueOf(play.getText())){
+            case "השהה":
+                Pause();
+                break;
+            case "המשך":
+                unPause();
+                break;
+            case "נגן חידה":
+                player = MediaPlayer.create(getActivity(), R.raw.riddle);
+                player.setOnPreparedListener(this);
+                player.start();
+                break;
+        }
+
     }
 
     @Override
@@ -39,5 +52,22 @@ public class QuizFragment extends Fragment implements View.OnClickListener {
         super.onStop();
         player.pause();
         player.stop();
+    }
+    protected void unPause(){
+        player.start();
+    }
+    protected void Pause(){
+        player.pause();
+    }
+    @Override
+    public void onPrepared(MediaPlayer mp) {
+        play.setText("השהה");
+    }
+
+    @Override
+    public void onCompletion(MediaPlayer mp) {
+        play.setText("נגן מחדש");
+        player.stop();
+        player.release();
     }
 }

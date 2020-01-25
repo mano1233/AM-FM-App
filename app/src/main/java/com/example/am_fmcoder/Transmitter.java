@@ -119,8 +119,16 @@ public class Transmitter implements MediaPlayer.OnPreparedListener, MediaPlayer.
     public void Release(){
         player.stop();
         player.release();
+        player = null;
     }
 
+    public void Pause(){
+        player.pause();
+    }
+
+    public void Resume(){
+        player.start();
+    }
     @Override
     public void onPrepared(MediaPlayer mp) {
         PlaySound.setPause();
