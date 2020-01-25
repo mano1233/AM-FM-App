@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.am_fmcoder.R;
 import com.example.am_fmcoder.Transmitter;
@@ -43,8 +44,21 @@ public class PlaySound extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        transmit = new Transmitter(this.getApplicationContext(), letterdict, bindict, mod, v);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                play();
+            }
+        }).start();
+        TextView t = findViewById(R.id.textViewloading);
+        t.setText("טוען");
+
+    }
+    protected void play(){
+        transmit = new Transmitter(this.getApplicationContext(), letterdict, bindict, mod);
         transmit.Transmit(message, amp, freq);
+
     }
 
     @Override
