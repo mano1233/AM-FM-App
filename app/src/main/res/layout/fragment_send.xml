@@ -104,17 +104,17 @@
         app:layout_constraintTop_toBottomOf="@+id/seekBar_fm" />
 
     <TextView
-        android:id="@+id/textView_am"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="440"
-        app:layout_constraintBottom_toTopOf="@+id/seekBar_am"
-        app:layout_constraintStart_toStartOf="@+id/seekBar_am" />
-    <TextView
         android:id="@+id/textView_fm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0.5"
+        android:text="@string/defaultfreq"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar_am"
+        app:layout_constraintStart_toStartOf="@+id/seekBar_am" />
+    <TextView
+        android:id="@+id/textView_am"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/defaultamp"
         app:layout_constraintBottom_toTopOf="@+id/seekBar_fm"
         app:layout_constraintStart_toStartOf="@+id/seekBar_fm" />
 

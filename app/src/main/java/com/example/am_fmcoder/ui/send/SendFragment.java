@@ -31,8 +31,8 @@ public class SendFragment extends Fragment implements View.OnClickListener{
     private String binkey = "";
     private String letterkey = "";
     private View root;
-    TextView textView_am;
     TextView textView_fm;
+    TextView textView_am;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -43,6 +43,10 @@ public class SendFragment extends Fragment implements View.OnClickListener{
         Map<String, Map<String, String>> letterdicts = Dictonaries.getLetterDict();
         Object[] letternames = letterdicts.keySet().toArray();
         letter = new Button[letterdicts.size()];
+        View binarylayout = root.findViewById(R.id.send_bin_layout);
+        Map<String, Map<String, String>> bindicts = Dictonaries.getBinDict();
+        Object[] binnames = bindicts.keySet().toArray();
+        bin = new Button[letterdicts.size()];
         for (int i = 0; i < letter.length; i++) {
             letter[i] = new Button(getActivity());
             letter[i].setText((String) letternames[i]);
@@ -53,10 +57,24 @@ public class SendFragment extends Fragment implements View.OnClickListener{
             letter[i].setLayoutParams(lp);
             ((LinearLayout) letterlayout).addView(letter[i]);
             letter[i].setOnClickListener(this);
-
         }
+        for (int i = 0; i < bin.length; i++) {
+            bin[i] = new Button(getActivity());
+            bin[i].setText((String) binnames[i]);
+            bin[i].setBackgroundColor(Color.LTGRAY);
+            bin[i].setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            bin[i].setId(i);
+            ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            bin[i].setLayoutParams(lp);
+            ((LinearLayout) binarylayout).addView(bin[i]);
+            bin[i].setOnClickListener(this);
+        }
+        letterkey = (String) letternames[0];
+        letter[0].setBackgroundColor(Color.WHITE);
+        binkey = (String) binnames[0];
+        bin[0].setBackgroundColor(Color.WHITE);
         final SeekBar seekbar_am = root.findViewById(R.id.seekBar_am);
-        textView_am = root.findViewById(R.id.textView_am);
+        textView_fm = root.findViewById(R.id.textView_fm);
         seekbar_am.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                                                   @Override
                                                   public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -64,27 +82,27 @@ public class SendFragment extends Fragment implements View.OnClickListener{
                                                       int val = (progress * (seekBar.getWidth() - 2 * seekBar.getThumbOffset())) / seekBar.getMax();
                                                       switch (progress){
                                                           case 0:
-                                                              textView_am.setText("440");
+                                                              textView_fm.setText("440");
                                                               break;
                                                           case 1:
-                                                              textView_am.setText("660");
+                                                              textView_fm.setText("660");
                                                               break;
                                                           case 2:
-                                                              textView_am.setText("880");
+                                                              textView_fm.setText("880");
                                                               break;
                                                           case 3:
-                                                              textView_am.setText("1000");
+                                                              textView_fm.setText("1000");
                                                               break;
                                                           case 4:
-                                                              textView_am.setText("1220");
+                                                              textView_fm.setText("1220");
                                                               break;
                                                           case 5:
-                                                              textView_am.setText("1440");
+                                                              textView_fm.setText("1440");
                                                               break;
                                                       }
-                                                      textView_am.setX(seekBar.getX() + val  + seekBar.getThumbOffset() / 2);
+                                                      textView_fm.setX(seekBar.getX() + val  + seekBar.getThumbOffset() / 2);
                                                       float offset = seekbar_am.getY() - 100f;
-                                                      textView_am.setY(offset); //just added a value set this properly using screen with height aspect ratio , if you do not set it by default it will be there below seek bar
+                                                      textView_fm.setY(offset); //just added a value set this properly using screen with height aspect ratio , if you do not set it by default it will be there below seek bar
 
                                                   }
 
@@ -99,7 +117,7 @@ public class SendFragment extends Fragment implements View.OnClickListener{
                                                   }
                                               });
         final SeekBar seekbar_fm = root.findViewById(R.id.seekBar_fm);
-        textView_fm = root.findViewById(R.id.textView_fm);
+        textView_am = root.findViewById(R.id.textView_am);
         seekbar_fm.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -107,27 +125,27 @@ public class SendFragment extends Fragment implements View.OnClickListener{
                 int val = (progress * (seekBar.getWidth() - 2 * seekBar.getThumbOffset())) / seekBar.getMax();
                 switch (progress){
                     case 0:
-                        textView_fm.setText("0.5");
+                        textView_am.setText("0.5");
                         break;
                     case 1:
-                        textView_fm.setText("0.6");
+                        textView_am.setText("0.6");
                         break;
                     case 2:
-                        textView_fm.setText("0.7");
+                        textView_am.setText("0.7");
                         break;
                     case 3:
-                        textView_fm.setText("0.8");
+                        textView_am.setText("0.8");
                         break;
                     case 4:
-                        textView_fm.setText("0.9");
+                        textView_am.setText("0.9");
                         break;
                     case 5:
-                        textView_fm.setText("1");
+                        textView_am.setText("1");
                         break;
                 }
-                textView_fm.setX(seekBar.getX() + val  + seekBar.getThumbOffset() / 2);
+                textView_am.setX(seekBar.getX() + val  + seekBar.getThumbOffset() / 2);
                 float offset = seekbar_fm.getY() - 100f;
-                textView_fm.setY(offset); //just added a value set this properly using screen with height aspect ratio , if you do not set it by default it will be there below seek bar
+                textView_am.setY(offset); //just added a value set this properly using screen with height aspect ratio , if you do not set it by default it will be there below seek bar
 
             }
 
@@ -141,22 +159,6 @@ public class SendFragment extends Fragment implements View.OnClickListener{
 
             }
         });
-        View binarylayout = root.findViewById(R.id.send_bin_layout);
-        Map<String, Map<String, String>> bindicts = Dictonaries.getBinDict();
-        Object[] binnames = bindicts.keySet().toArray();
-        bin = new Button[letterdicts.size()];
-        for (int i = 0; i < bin.length; i++) {
-            bin[i] = new Button(getActivity());
-            bin[i].setText((String) binnames[i]);
-            bin[i].setBackgroundColor(Color.LTGRAY);
-            bin[i].setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            bin[i].setId(i);
-            ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            bin[i].setLayoutParams(lp);
-            ((LinearLayout) binarylayout).addView(bin[i]);
-            bin[i].setOnClickListener(this);
-
-        }
         return root;
     }
 
@@ -178,6 +180,7 @@ public class SendFragment extends Fragment implements View.OnClickListener{
         intent.putExtra("letterkey", letterkey);
         intent.putExtra("binkey", binkey);
         intent.putExtra("freq", String.valueOf(textView_fm.getText()));
+        Log.d("fick", "freq:" + String.valueOf(textView_fm.getText()));
         intent.putExtra("amp", String.valueOf(textView_am.getText()));
         startActivity(intent);
 

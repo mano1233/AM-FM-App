@@ -68,7 +68,7 @@ public class AddDict extends AppCompatActivity {
         }
         letterdict = new HashMap<>();
         Map<String, Map<String, String>> dictfin = new HashMap<>();
-        String dictname = "default letters dict";
+        String dictname = "מילון הצפנה דיפלוטי";
         if (isAccepted(letters)) {
             for (EditText text : letters) {
                 letterdict.put(String.valueOf(text.getHint()),text.getText().toString());

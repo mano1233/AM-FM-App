@@ -52,7 +52,7 @@ public class AddBinDict extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         bindict = new HashMap<>();
         Map<String, Map<String, String>> dictfin = new HashMap<>();
-        String dictname = "default binary dict";
+        String dictname = "מילון בינארי דיפולטי";
         if (isAccepted(bin)) {
             for (int i=0; i<27; i++) {
                 String temp = bin[i].getText().toString();

@@ -27,6 +27,7 @@ public class Extended {
         }
         return dict;
     }
+    // Checks if every letter key has a value
     public static final Boolean isAccepted(EditText[] dict){
         for (EditText text: dict) {
             if (text.getText().length() == 0){

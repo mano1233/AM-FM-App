@@ -22,4 +22,6 @@
     <string name="menu_quiz">חידה</string>
     <string name="menu_credit">Credit</string>
     <string name="section_2">Communicate</string>
+    <string name="defaultamp">0.5</string>
+    <string name="defaultfreq">440</string>
 </resources>
