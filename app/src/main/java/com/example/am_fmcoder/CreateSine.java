@@ -22,7 +22,7 @@ public class CreateSine
     static int byteCount = 0;
 
     static float freq;
-    static int sRate = 44100;
+    static int sRate = 11025;
     static int bitDepth = 16;
     static int nChannels = 1;
     static float amp;
@@ -90,8 +90,8 @@ public class CreateSine
             writeSample((float) Math.sin(2 * i * changeRate));
         }
         // write to file
-        double breakTime = 0.25;
-        double byteTime = 0.5;
+        double breakTime = 0.5;
+        double byteTime = 1;
 
         if (AMFM.equals("FM")) {
             for (int i = 0; i < bytes.length; i++) {
@@ -124,7 +124,7 @@ public class CreateSine
                 // write byte
                 for (int j = 0; j < byteTime * sRate; j++) {
                     if (b == 0) {
-                        writeSample((float) (amp*0.5*Math.sin(j * changeRate)));
+                        writeSample((float) (amp*0.3*Math.sin(j * changeRate)));
                     } else {
                         writeSample((float) (amp*Math.sin(j * changeRate)));
                     }

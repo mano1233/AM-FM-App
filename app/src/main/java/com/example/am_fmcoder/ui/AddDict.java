@@ -73,6 +73,23 @@ public class AddDict extends AppCompatActivity {
             Log.d("fuck", dictfin.toString());
             Dictonaries.addLetterDict(dictfin);
         }
+        else {
+            for (int i = 0; i < 27; i++) {
+                EditText text = letters[i];
+                if (text.getText().toString().equals("")) {
+                    String str = String.valueOf(text.getHint());
+                    letterdict.put(String.valueOf(text.getHint()), str.substring(0,str.length()-1));
+                }
+                else {
+                    letterdict.put(String.valueOf(text.getHint()), text.getText().toString());
+                }
+            }
+            EditText dictName = findViewById(R.id.dictname);
+            dictname = String.valueOf(dictName.getText());
+            dictfin.put(dictname,letterdict);
+            Log.d("fuck", dictfin.toString());
+            Dictonaries.addLetterDict(dictfin);
+        }
         startActivity(intent);
 
     }
