@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.File;
 import java.util.Map;
@@ -93,14 +94,12 @@ public class Transmitter {
                 System.out.println("Exception of type : " + e.toString());
                 e.printStackTrace();
             }
-
             player.start();
 
         }
 
         else {
             player = new MediaPlayer();
-
             try {
                 player.setDataSource(path);
                 player.prepare();
@@ -110,7 +109,6 @@ public class Transmitter {
                 System.out.println("Exception of type : " + e.toString());
                 e.printStackTrace();
             }
-
             player.start();
 
         }
