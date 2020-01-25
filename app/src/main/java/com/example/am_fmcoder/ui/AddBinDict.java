@@ -65,7 +65,7 @@ public class AddBinDict extends AppCompatActivity {
         else {
             for(int i=0; i<27; i++){
                 String temp = toBinaryString(i+1);
-                String binary = new String(new char[5-temp.length()]).replace("\0", "0") + temp;
+                String binary = temp + new String(new char[5-temp.length()]).replace("\0", "0");
                 bindict.put(String.valueOf(bin[i].getHint()), binary);
             }
         }

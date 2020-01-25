@@ -4,6 +4,8 @@ package com.example.am_fmcoder;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import java.io.File;
 import java.util.Map;
@@ -24,7 +26,7 @@ public class Transmitter {
      * @param BinaryDict binary Map. א->00001...
      * @param TransmitMethod - "AM" for AM and FM for FM
      */
-    public Transmitter(Context myContext, Map<String,String> encriptionDict, Map<String,String> BinaryDict, String TransmitMethod) {
+    public Transmitter(Context myContext, Map<String,String> encriptionDict, Map<String,String> BinaryDict, String TransmitMethod, View v) {
         this.transmitMethod = TransmitMethod;
         this.encriptionDict = encriptionDict;
         this.binaryDict = BinaryDict;
@@ -95,7 +97,7 @@ public class Transmitter {
         }
 
         else {
-            MediaPlayer player = new MediaPlayer();
+            player = new MediaPlayer();
 
             try {
                 player.setDataSource(path);
@@ -113,6 +115,7 @@ public class Transmitter {
 
     }
     public void Release(){
+        player.stop();
         player.release();
     }
 

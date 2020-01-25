@@ -43,9 +43,7 @@ public class PlaySound extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        transmit = new Transmitter(this.getApplicationContext(), letterdict, bindict, mod);
-        Log.d("fuck", freq);
-        Log.d("fuck", amp);
+        transmit = new Transmitter(this.getApplicationContext(), letterdict, bindict, mod, v);
         transmit.Transmit(message, amp, freq);
     }
 
