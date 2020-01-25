@@ -24,4 +24,5 @@
     <string name="section_2">Communicate</string>
     <string name="defaultamp">0.5</string>
     <string name="defaultfreq">440</string>
+    <fraction name="iconsize">30.0</fraction>
 </resources>
