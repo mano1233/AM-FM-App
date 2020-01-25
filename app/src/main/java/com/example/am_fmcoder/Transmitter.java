@@ -3,6 +3,7 @@ package com.example.am_fmcoder;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.util.Log;
 
 import java.io.File;
 import java.util.Map;
@@ -111,7 +112,7 @@ public class Transmitter {
         }
 
     }
-    public void Release(MediaPlayer player){
+    public void Release(){
         player.release();
     }
 

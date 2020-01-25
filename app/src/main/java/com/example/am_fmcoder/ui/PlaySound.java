@@ -21,8 +21,9 @@ public class PlaySound extends AppCompatActivity implements View.OnClickListener
     private String message;
     private Map<String, String> letterdict;
     private Map<String, String> bindict;
+    private String amp;
+    private String freq;
     Transmitter transmit;
-    MediaPlayer player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,8 @@ public class PlaySound extends AppCompatActivity implements View.OnClickListener
         Intent intent = getIntent();
         mod = intent.getStringExtra("mod");
         message = intent.getStringExtra("message");
+        amp = intent.getStringExtra("amp");
+        freq = intent.getStringExtra("freq");
         letterdict = Dictonaries.getLetterDict(intent.getStringExtra("letterkey"));
         bindict = Dictonaries.getBinDict(intent.getStringExtra("binkey")) ;
         Button play = findViewById(R.id.play_sound);
@@ -41,12 +44,17 @@ public class PlaySound extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         transmit = new Transmitter(this.getApplicationContext(), letterdict, bindict, mod);
-        transmit.Transmit(message, "880","1");
+        Log.d("fuck", freq);
+        Log.d("fuck", amp);
+        transmit.Transmit(message, amp, freq);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        transmit.Release(player);
+        if (transmit != null){
+            transmit.Release();
+        }
+
     }
 }

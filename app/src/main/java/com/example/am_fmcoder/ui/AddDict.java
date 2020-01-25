@@ -78,7 +78,7 @@ public class AddDict extends AppCompatActivity {
         }
         else {
             for(int i=0; i<27; i++){
-                letterdict.put(String.valueOf(Extended.getChar(i)),String.valueOf(Extended.getChar(i)));
+                letterdict.put(String.valueOf(Extended.getChar(i)) + " ",String.valueOf(Extended.getChar(i)));
             }
         }
         dictfin.put(dictname,letterdict);

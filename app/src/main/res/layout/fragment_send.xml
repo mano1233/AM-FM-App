@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
@@ -49,8 +50,8 @@
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/seekBar0"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar0"
+        app:layout_constraintStart_toStartOf="@+id/seekBar_am"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_am"
         app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
@@ -66,8 +67,8 @@
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/seekBar0"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar0"
+        app:layout_constraintEnd_toEndOf="@+id/seekBar_am"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_am"
         app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
@@ -80,9 +81,10 @@
     </ScrollView>
 
     <SeekBar
-        android:id="@+id/seekBar1"
+        android:id="@+id/seekBar_fm"
         android:layout_width="300dp"
         android:layout_height="24dp"
+        android:max="5"
         android:layout_marginTop="24dp"
         android:indeterminate="false"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,13 +93,29 @@
         app:layout_constraintTop_toBottomOf="@+id/AM_FM_fragment" />
 
     <SeekBar
-        android:id="@+id/seekBar0"
+        android:id="@+id/seekBar_am"
         android:layout_width="300dp"
+        android:max="5"
         android:layout_height="24dp"
         android:layout_marginTop="24dp"
         android:indeterminate="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar1" />
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_fm" />
+
+    <TextView
+        android:id="@+id/textView_am"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="440"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar_am"
+        app:layout_constraintStart_toStartOf="@+id/seekBar_am" />
+    <TextView
+        android:id="@+id/textView_fm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.5"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar_fm"
+        app:layout_constraintStart_toStartOf="@+id/seekBar_fm" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

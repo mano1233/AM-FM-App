@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
@@ -22,13 +24,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Map;
 
-public class SendFragment extends Fragment implements View.OnClickListener {
+public class SendFragment extends Fragment implements View.OnClickListener{
 
     private Button[] letter;
     private Button[] bin;
     private String binkey = "";
     private String letterkey = "";
     private View root;
+    TextView textView_am;
+    TextView textView_fm;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -51,6 +55,92 @@ public class SendFragment extends Fragment implements View.OnClickListener {
             letter[i].setOnClickListener(this);
 
         }
+        final SeekBar seekbar_am = root.findViewById(R.id.seekBar_am);
+        textView_am = root.findViewById(R.id.textView_am);
+        seekbar_am.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                                                  @Override
+                                                  public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+                                                      int val = (progress * (seekBar.getWidth() - 2 * seekBar.getThumbOffset())) / seekBar.getMax();
+                                                      switch (progress){
+                                                          case 0:
+                                                              textView_am.setText("440");
+                                                              break;
+                                                          case 1:
+                                                              textView_am.setText("660");
+                                                              break;
+                                                          case 2:
+                                                              textView_am.setText("880");
+                                                              break;
+                                                          case 3:
+                                                              textView_am.setText("1000");
+                                                              break;
+                                                          case 4:
+                                                              textView_am.setText("1220");
+                                                              break;
+                                                          case 5:
+                                                              textView_am.setText("1440");
+                                                              break;
+                                                      }
+                                                      textView_am.setX(seekBar.getX() + val  + seekBar.getThumbOffset() / 2);
+                                                      float offset = seekbar_am.getY() - 100f;
+                                                      textView_am.setY(offset); //just added a value set this properly using screen with height aspect ratio , if you do not set it by default it will be there below seek bar
+
+                                                  }
+
+                                                  @Override
+                                                  public void onStartTrackingTouch(SeekBar seekBar) {
+
+                                                  }
+
+                                                  @Override
+                                                  public void onStopTrackingTouch(SeekBar seekBar) {
+
+                                                  }
+                                              });
+        final SeekBar seekbar_fm = root.findViewById(R.id.seekBar_fm);
+        textView_fm = root.findViewById(R.id.textView_fm);
+        seekbar_fm.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+                int val = (progress * (seekBar.getWidth() - 2 * seekBar.getThumbOffset())) / seekBar.getMax();
+                switch (progress){
+                    case 0:
+                        textView_fm.setText("0.5");
+                        break;
+                    case 1:
+                        textView_fm.setText("0.6");
+                        break;
+                    case 2:
+                        textView_fm.setText("0.7");
+                        break;
+                    case 3:
+                        textView_fm.setText("0.8");
+                        break;
+                    case 4:
+                        textView_fm.setText("0.9");
+                        break;
+                    case 5:
+                        textView_fm.setText("1");
+                        break;
+                }
+                textView_fm.setX(seekBar.getX() + val  + seekBar.getThumbOffset() / 2);
+                float offset = seekbar_fm.getY() - 100f;
+                textView_fm.setY(offset); //just added a value set this properly using screen with height aspect ratio , if you do not set it by default it will be there below seek bar
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
         View binarylayout = root.findViewById(R.id.send_bin_layout);
         Map<String, Map<String, String>> bindicts = Dictonaries.getBinDict();
         Object[] binnames = bindicts.keySet().toArray();
@@ -87,6 +177,8 @@ public class SendFragment extends Fragment implements View.OnClickListener {
         intent.putExtra("message", massage);
         intent.putExtra("letterkey", letterkey);
         intent.putExtra("binkey", binkey);
+        intent.putExtra("freq", String.valueOf(textView_fm.getText()));
+        intent.putExtra("amp", String.valueOf(textView_am.getText()));
         startActivity(intent);
 
     }
