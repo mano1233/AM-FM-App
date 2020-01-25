@@ -1,7 +1,10 @@
 package com.example.am_fmcoder.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +15,7 @@ import android.widget.LinearLayout;
 
 import com.example.am_fmcoder.MainActivity;
 import com.example.am_fmcoder.R;
+import com.example.am_fmcoder.ui.bindict.BinFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.Serializable;
