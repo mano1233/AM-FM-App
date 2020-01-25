@@ -34,7 +34,6 @@ public class AddDict extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_dict);
         Intent intent = getIntent();
-        is_standalone = intent.getBooleanExtra("is_standalone", false);
         letters = new EditText[27];
         View letterlayout = findViewById(R.id.letterlayout);
         for(int i = 0; i < letters.length; i++) {
@@ -60,12 +59,7 @@ public class AddDict extends AppCompatActivity {
     }
     private void onButton(){
         Intent intent;
-        if (is_standalone){
-            intent = new Intent(this, MainActivity.class);
-        }
-        else {
-            intent = new Intent(this, AddBinDict.class);
-        }
+        intent = new Intent(this, MainActivity.class);
         letterdict = new HashMap<>();
         Map<String, Map<String, String>> dictfin = new HashMap<>();
         String dictname;
@@ -76,6 +70,7 @@ public class AddDict extends AppCompatActivity {
             EditText dictName = findViewById(R.id.dictname);
             dictname = String.valueOf(dictName.getText());
             dictfin.put(dictname,letterdict);
+            Log.d("fuck", dictfin.toString());
             Dictonaries.addLetterDict(dictfin);
         }
         startActivity(intent);

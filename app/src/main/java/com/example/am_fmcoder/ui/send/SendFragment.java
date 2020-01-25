@@ -46,28 +46,28 @@ public class SendFragment extends Fragment implements View.OnClickListener{
         View binarylayout = root.findViewById(R.id.send_bin_layout);
         Map<String, Map<String, String>> bindicts = Dictonaries.getBinDict();
         Object[] binnames = bindicts.keySet().toArray();
-        bin = new Button[letterdicts.size()];
+        bin = new Button[bindicts.size()];
         for (int i = 0; i < letternames.length; i++) {
             letter[i] = new Button(getActivity());
+            letter[i].setOnClickListener(this);
             letter[i].setText((String) letternames[i]);
             letter[i].setBackgroundColor(Color.LTGRAY);
             letter[i].setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            letter[i].setId(i);
+            letter[i].setHint("letter");
             ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             letter[i].setLayoutParams(lp);
             ((LinearLayout) letterlayout).addView(letter[i]);
-            letter[i].setOnClickListener(this);
         }
         for (int i = 0; i < binnames.length; i++) {
             bin[i] = new Button(getActivity());
+            bin[i].setOnClickListener(this);
             bin[i].setText((String) binnames[i]);
             bin[i].setBackgroundColor(Color.LTGRAY);
             bin[i].setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            bin[i].setId(i);
+            bin[i].setHint("bin");
             ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             bin[i].setLayoutParams(lp);
             ((LinearLayout) binarylayout).addView(bin[i]);
-            bin[i].setOnClickListener(this);
         }
         final SeekBar seekbar_am = root.findViewById(R.id.seekBar_am);
         textView_fm = root.findViewById(R.id.textView_fm);
@@ -191,6 +191,7 @@ public class SendFragment extends Fragment implements View.OnClickListener{
             }
         }
         if (is_letter) {
+
             for (Button b : letter) {
                 if (b.isPressed()) {
                     letterkey = String.valueOf(b.getText());

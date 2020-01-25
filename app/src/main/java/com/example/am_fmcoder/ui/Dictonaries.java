@@ -15,13 +15,13 @@ public class Dictonaries {
     private static Map<String,Map<String, String>> letterdict = new HashMap<>();
     private static Map<String,Map<String, String>> bindict= new HashMap<>();
     public static void addLetterDict(Map<String,Map<String, String>> dict){
-        String key = (String)dict.keySet().toArray()[0];
+        String key = (String)(dict.keySet().toArray()[0]);
         if(!letterdict.containsKey(key)){
             letterdict.put(key,dict.get(key));
         }
     }
     public static void addbinDict(Map<String, Map<String, String>> dict){
-        String key = (String)dict.keySet().toArray()[0];
+        String key = (String)(dict.keySet().toArray()[0]);
         if(!bindict.containsKey(key)){
             bindict.put(key,dict.get(key));
         }
