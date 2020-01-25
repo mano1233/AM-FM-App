@@ -25,7 +25,6 @@ public class QuizFragment extends Fragment implements View.OnClickListener, Medi
         View root = inflater.inflate(R.layout.fragment_quiz, container, false);
         play = root.findViewById(R.id.play_Riddle);
         play.setOnClickListener(this);
-
         return root;
     }
 
@@ -50,6 +49,9 @@ public class QuizFragment extends Fragment implements View.OnClickListener, Medi
     @Override
     public void onStop() {
         super.onStop();
+        if (player == null){
+            return;
+        }
         player.pause();
         player.stop();
     }
