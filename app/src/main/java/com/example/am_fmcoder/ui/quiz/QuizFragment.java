@@ -16,7 +16,6 @@ import com.example.am_fmcoder.R;
 
 public class QuizFragment extends Fragment implements View.OnClickListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
 
-    private QuizViewModel quizViewModel;
     MediaPlayer player;
     Button play;
 

@@ -84,6 +84,7 @@ public class PlaySound extends AppCompatActivity implements View.OnClickListener
         super.onStop();
         if (transmit != null){
             transmit.Release();
+            transmit = null;
         }
 
     }

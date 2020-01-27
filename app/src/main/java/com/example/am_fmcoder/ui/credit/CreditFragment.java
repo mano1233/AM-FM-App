@@ -14,20 +14,10 @@ import com.example.am_fmcoder.R;
 
 public class CreditFragment extends Fragment {
 
-    private CreditViewModel creditViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        creditViewModel =
-                ViewModelProviders.of(this).get(CreditViewModel.class);
         View root = inflater.inflate(R.layout.fragment_credit, container, false);
-        final TextView textView = root.findViewById(R.id.text_send);
-        creditViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
         return root;
     }
 }
