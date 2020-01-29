@@ -53,8 +53,8 @@ public class AddBinDict extends AppCompatActivity {
         if (isAccepted(bin)) {
             for (int i=0; i<27; i++) {
                 String temp = bin[i].getText().toString();
-                String binary = new String(new char[5-temp.length()]).replace("\0", "0");
-                bindict.put(String.valueOf(bin[i].getHint()), binary);
+                //String binary = new String(new char[5-temp.length()]).replace("\0", "0");
+                bindict.put(String.valueOf(bin[i].getHint()), temp);
             }
             EditText dictName = findViewById(R.id.dictname);
             dictname = String.valueOf(dictName.getText());

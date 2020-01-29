@@ -123,7 +123,7 @@ public class CreateSine
                 // write byte
                 for (int j = 0; j < byteTime * sRate; j++) {
                     if (b == 0) {
-                        writeSample((float) (amp*0.3*Math.sin(j * changeRate)));
+                        writeSample((float) (amp*0.1*Math.sin(j * changeRate)));
                     } else {
                         writeSample((float) (amp*Math.sin(j * changeRate)));
                     }
