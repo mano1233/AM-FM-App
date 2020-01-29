@@ -1,18 +1,15 @@
-package com.example.am_fmcoder.ui;
+package com.coder.am_fmcoder.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.am_fmcoder.R;
-import com.example.am_fmcoder.Transmitter;
-import com.example.am_fmcoder.ui.Dictonaries;
+import com.coder.am_fmcoder.R;
+import com.coder.am_fmcoder.Transmitter;
 
 import java.util.Map;
 

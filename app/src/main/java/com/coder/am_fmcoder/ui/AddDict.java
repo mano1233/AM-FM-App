@@ -1,29 +1,23 @@
-package com.example.am_fmcoder.ui;
+package com.coder.am_fmcoder.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import java.io.Serializable;
-import java.util.Dictionary;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.example.am_fmcoder.MainActivity;
-import com.example.am_fmcoder.R;
+import com.coder.am_fmcoder.MainActivity;
+import com.coder.am_fmcoder.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import static com.example.am_fmcoder.ui.Extended.isAccepted;
+import static com.coder.am_fmcoder.ui.Extended.isAccepted;
 
 public class AddDict extends AppCompatActivity {
     private EditText[] letters = null;

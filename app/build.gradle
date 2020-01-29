@@ -4,7 +4,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "com.example.am_fmcoder"
+        applicationId "com.coder.am_fmcoder"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
@@ -18,7 +18,7 @@ android {
         }
     }
     sourceSets {
-        main { java.srcDirs = ['src/main/java', 'app/java/com.example.am_fmcoder/ui/addmenus'] }
+        main { java.srcDirs = ['src/main/java', 'app/java/com.coder.am_fmcoder/ui/addmenus'] }
     }
 }
 

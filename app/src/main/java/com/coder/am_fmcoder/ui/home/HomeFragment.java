@@ -1,4 +1,4 @@
-package com.example.am_fmcoder.ui.home;
+package com.coder.am_fmcoder.ui.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,9 +8,8 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 
-import com.example.am_fmcoder.R;
+import com.coder.am_fmcoder.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HomeFragment extends Fragment{

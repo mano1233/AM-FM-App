@@ -1,7 +1,6 @@
-package com.example.am_fmcoder;
+package com.coder.am_fmcoder;
 
 import android.content.Context;
-import android.util.Log;
 
 import java.io.File;
 import java.io.IOException;
@@ -90,8 +89,8 @@ public class CreateSine
             writeSample((float) Math.sin(2 * i * changeRate));
         }
         // write to file
-        double breakTime = 0.5;
-        double byteTime = 1;
+        double breakTime = 0.3;
+        double byteTime = 0.7;
 
         if (AMFM.equals("FM")) {
             for (int i = 0; i < bytes.length; i++) {

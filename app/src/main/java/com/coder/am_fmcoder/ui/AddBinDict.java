@@ -1,29 +1,22 @@
-package com.example.am_fmcoder.ui;
+package com.coder.am_fmcoder.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import com.example.am_fmcoder.MainActivity;
-import com.example.am_fmcoder.R;
-import com.example.am_fmcoder.ui.bindict.BinFragment;
+import com.coder.am_fmcoder.MainActivity;
+import com.coder.am_fmcoder.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.am_fmcoder.ui.Extended.isAccepted;
-import static java.lang.Integer.toBinaryString;
+import static com.coder.am_fmcoder.ui.Extended.isAccepted;
 
 public class AddBinDict extends AppCompatActivity {
     private EditText[] bin = null;

@@ -7,37 +7,37 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.am_fmcoder.ui.home.HomeFragment"
+        android:name="com.coder.am_fmcoder.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_bindict"
-        android:name="com.example.am_fmcoder.ui.bindict.BinFragment"
+        android:name="com.coder.am_fmcoder.ui.bindict.BinFragment"
         android:label="@string/menu_bin"
         tools:layout="@layout/fragment_bindict" />
 
     <fragment
         android:id="@+id/nav_letterdict"
-        android:name="com.example.am_fmcoder.ui.letterdict.LetterFragment"
+        android:name="com.coder.am_fmcoder.ui.letterdict.LetterFragment"
         android:label="@string/menu_letter"
         tools:layout="@layout/fragment_letterdict" />
 
     <fragment
         android:id="@+id/nav_send"
-        android:name="com.example.am_fmcoder.ui.send.SendFragment"
+        android:name="com.coder.am_fmcoder.ui.send.SendFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_send" />
 
     <fragment
         android:id="@+id/nav_share"
-        android:name="com.example.am_fmcoder.ui.quiz.QuizFragment"
+        android:name="com.coder.am_fmcoder.ui.quiz.QuizFragment"
         android:label="@string/menu_quiz"
         tools:layout="@layout/fragment_quiz" />
 
     <fragment
         android:id="@+id/nav_credit"
-        android:name="com.example.am_fmcoder.ui.credit.CreditFragment"
+        android:name="com.coder.am_fmcoder.ui.credit.CreditFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_credit" />
 </navigation>

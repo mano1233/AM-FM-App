@@ -1,8 +1,7 @@
-package com.example.am_fmcoder.ui.letterdict;
+package com.coder.am_fmcoder.ui.letterdict;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +11,9 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.am_fmcoder.R;
-import com.example.am_fmcoder.ui.AddDict;
-import com.example.am_fmcoder.ui.Dictonaries;
+import com.coder.am_fmcoder.R;
+import com.coder.am_fmcoder.ui.AddDict;
+import com.coder.am_fmcoder.ui.Dictonaries;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Map;

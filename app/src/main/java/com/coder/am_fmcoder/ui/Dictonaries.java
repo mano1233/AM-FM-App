@@ -1,15 +1,16 @@
-package com.example.am_fmcoder.ui;
+package com.coder.am_fmcoder.ui;
 
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.am_fmcoder.MainActivity;
+import com.coder.am_fmcoder.ui.Extended;
+import com.coder.am_fmcoder.MainActivity;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static java.lang.Integer.toBinaryString;
-import static com.example.am_fmcoder.ui.Extended.getChar;
+import static com.coder.am_fmcoder.ui.Extended.getChar;
 
 public class Dictonaries {
     private static Map<String,Map<String, String>> letterdict = new HashMap<>();
@@ -43,7 +44,9 @@ public class Dictonaries {
         Map<String, String> ldict= new HashMap<>();
         for(int i=0; i<27; i++){
             String temp = toBinaryString(i+1);
-            String binary = temp + new String(new char[5-temp.length()]).replace("\0", "0");
+            System.out.println("temp=  " + temp);
+            String binary = new String(new char[5-temp.length()]).replace("\0", "0") + temp;
+            System.out.println("building binary dict:    " + String.valueOf(getChar(i)) + "      " + binary);
             bdict.put(String.valueOf(getChar(i))+ " ", binary);
         }
         bindict.put("מילון בינארי דיפולטי",bdict);

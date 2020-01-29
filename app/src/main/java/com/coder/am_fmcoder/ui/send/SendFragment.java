@@ -1,9 +1,8 @@
-package com.example.am_fmcoder.ui.send;
+package com.coder.am_fmcoder.ui.send;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +15,10 @@ import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
-import com.example.am_fmcoder.R;
-import com.example.am_fmcoder.ui.Dictonaries;
-import com.example.am_fmcoder.ui.PlaySound;
+
+import com.coder.am_fmcoder.R;
+import com.coder.am_fmcoder.ui.Dictonaries;
+import com.coder.am_fmcoder.ui.PlaySound;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Map;

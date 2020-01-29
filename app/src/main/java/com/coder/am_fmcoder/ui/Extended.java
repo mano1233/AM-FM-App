@@ -1,6 +1,5 @@
-package com.example.am_fmcoder.ui;
+package com.coder.am_fmcoder.ui;
 
-import android.util.Log;
 import android.widget.EditText;
 
 import java.util.HashMap;

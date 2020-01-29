@@ -1,4 +1,4 @@
-package com.example.am_fmcoder;
+package com.coder.am_fmcoder;
 
 import org.junit.Test;
 
