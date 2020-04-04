@@ -6,6 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:text="תדירות Hz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AM_FM_fragment" />
+
     <ToggleButton
         android:id="@+id/AM_FM_fragment"
         android:layout_width="wrap_content"
@@ -84,22 +94,23 @@
         android:id="@+id/seekBar_fm"
         android:layout_width="300dp"
         android:layout_height="24dp"
-        android:max="5"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="76dp"
         android:indeterminate="false"
+        android:max="5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AM_FM_fragment" />
 
     <SeekBar
         android:id="@+id/seekBar_am"
         android:layout_width="300dp"
-        android:max="5"
         android:layout_height="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="76dp"
         android:indeterminate="false"
+        android:max="5"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar_fm" />
 
@@ -117,5 +128,16 @@
         android:text="@string/defaultamp"
         app:layout_constraintBottom_toTopOf="@+id/seekBar_fm"
         app:layout_constraintStart_toStartOf="@+id/seekBar_fm" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="עוצמה"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AM_FM_fragment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

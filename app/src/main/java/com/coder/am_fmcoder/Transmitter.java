@@ -94,7 +94,6 @@ public class Transmitter implements MediaPlayer.OnPreparedListener, MediaPlayer.
                 e.printStackTrace();
             }
             player.start();
-
         }
 
         else {
@@ -126,6 +125,7 @@ public class Transmitter implements MediaPlayer.OnPreparedListener, MediaPlayer.
     public void Resume(){
         player.start();
     }
+
     @Override
     public void onPrepared(MediaPlayer mp) {
         PlaySound.setPause();

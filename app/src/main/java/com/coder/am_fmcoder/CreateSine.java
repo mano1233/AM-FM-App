@@ -84,13 +84,34 @@ public class CreateSine
             System.out.println("I/O exception occured while writing data");
         }
 
-        // write begin sound 1 sec
-        for (int i = 0; i < sRate; i++) {
-            writeSample((float) Math.sin(2 * i * changeRate));
+        // write begin sound 2 sec for each pitch, 1 is first, then 0
+        double edgeTime = 2.0;
+        if (AMFM.equals("FM")) {
+            // 0
+            for (int i = 0; i < edgeTime * sRate; i++) {
+                writeSample((float) (amp * Math.sin(0.5 * i * changeRate)));
+            }
+            // 1
+            for (int i = 0; i < edgeTime * sRate; i++) {
+                writeSample((float) (amp * Math.sin(i * changeRate)));
+            }
         }
+
+        else {
+            // 0
+            for (int i = 0; i < edgeTime * sRate; i++) {
+                writeSample((float) (amp*0.1*Math.sin(i * changeRate)));
+            }
+            // 1
+            for (int i = 0; i < edgeTime * sRate; i++) {
+                writeSample((float) (amp*Math.sin(i * changeRate)));
+            }
+        }
+
         // write to file
-        double breakTime = 0.3;
-        double byteTime = 0.7;
+        double breakTime = 0.5;
+        double byteTime = 1.0;
+
 
         if (AMFM.equals("FM")) {
             for (int i = 0; i < bytes.length; i++) {
@@ -131,14 +152,17 @@ public class CreateSine
 
             }
         }
-        //write end 0 sound half sec
-        for (int i = 0; i < 0.5*sRate; i++) {
-            writeSample( 0);
-        }
-        // write end sound 1 sec
-        for (int i = 0; i < sRate; i++) {
-            writeSample( (float)Math.sin( 2*i * changeRate ));
-        }
+
+        // write end of sounds - no sound for breakTime seconds, edgePitch for 2 seconds
+
+//        //write end 0 sound half sec
+//        for (int i = 0; i < 0.5*sRate; i++) {
+//            writeSample( 0);
+//        }
+//        // write end sound 2 sec
+//        for (int i = 0; i < 2*sRate; i++) {
+//            writeSample( (float)Math.sin( 2*i * changeRate ));
+//        }
 
         closeFile();
         System.out.print("Finished");
